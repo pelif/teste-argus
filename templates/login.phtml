@@ -1,0 +1,39 @@
+<div class="container col-md-4">
+<div class="container-login">    
+<form action="/log-into" method="post">
+    <?php    
+    if($_REQUEST['m']) { 
+        $msg = (int) $_REQUEST['m']; 
+        $class = "alert alert-danger";
+
+        if($msg == 1) {
+          $message = "Não é possível acessar este app sem efetuar login!";           
+        }
+
+        if($msg == 3) {          
+          $message = "O e-mail ou senha inexistentes no sistema!";
+        }        
+    ?>     
+    <div class="<?=$class?>"><?=$message?></div>
+    <?php 
+        }
+    ?>     
+    <legend>Faça seu Login</legend>  
+
+    <div class="form-group">
+    <small id="emailHelp" class="form-text text-muted">Enter with your username (E-mail)</small>
+    <input type="text" name="email" class="form-control" >
+    </div>
+
+    <div class="form-group">
+    <small id="emailHelp" class="form-text text-muted">Enter with your Password</small>
+    <input type="password" name="password" class="form-control">
+    </div>
+
+    <div class="form-group">
+    <input type="submit" value="Entrar" class="btn btn-primary form-control">
+    </div>
+    </div>
+ </form>
+  </div>
+ </div>

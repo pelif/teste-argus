@@ -1,0 +1,83 @@
+<body>
+<div class="container martop-20">
+<?php     
+    if($_REQUEST['m']) { 
+        $msg = (int) $_REQUEST['m']; 
+        $class = "alert alert-success";
+
+        if($msg == 1) {
+          $message = "Usuário inserido com sucesso!"; 
+        }
+
+        if($msg == 2) {          
+          $class = "alert alert-danger"; 
+          $message = "Não foi possível inserir o usuário!";
+        }
+
+        if($msg == 3) {          
+          $message = "Usuário removido com sucesso!"; 
+        }      
+
+        if($msg == 4) {
+          $class = "alert alert-danger";
+          $message = "Não foi possível remover o usuário!"; 
+        }           
+  ?>     
+    <div class="<?=$class?>"><?=$message?></div>
+  <?php 
+    }
+  ?>
+    <h2>Cadastro de Usuários</h2>
+    <table class="table">
+    <thead>
+    <tr>      
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Created at</th>
+      <th scope="col">Remove</th>
+    </tr>
+    </thead>
+
+    <?php foreach($users as $user) { ?>
+    <tbody>
+    <tr>      
+      <td><?php echo $user->name; ?></td>
+      <td><?php echo $user->email; ?></td>
+      <td><?php echo $user->created_at; ?></td> 
+      <td>
+      <a href="/users/<?=$user->id ?>" class="btn btn-danger">Remover</a>
+      </td>     
+    </tr>    
+    </tbody>
+    <?php } ?>
+    </table>
+
+    <form action="/users" method="post">
+    <legend>Adicionar novo usuário</legend>
+
+    <div class="form-grou col-md-8">
+    <small id="emailHelp" class="form-text text-muted">Insert Name of User</small>
+    <input type="text" name="name" class="form-control">    
+    </div>
+
+    <div class="form-group col-md-8">
+    <small id="emailHelp" class="form-text text-muted">Insert E-mail of User</small>
+    <input type="text" name="email" class="form-control" >
+    </div>
+
+    <div class="form-group col-md-8">
+    <small id="emailHelp" class="form-text text-muted">Insert Password of User</small>
+    <input type="password" name="password" class="form-control">
+    </div>
+
+    <div class="form-group col-md-8">
+    <input type="submit" value="Salvar Usuário" class="btn btn-primary form-control">
+    </div>
+    </div>
+    </form>
+    </div>
+</div>
+
+ 
+
+</body>

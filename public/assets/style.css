@@ -1,0 +1,37 @@
+.index-container {
+    color:gray; 
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align:center;
+}
+
+.index-title {
+    font-weight:bold;
+    color:gray;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin-top:30px;    
+}
+
+.martop-20 {
+    margin-top:20px;
+}
+
+.nav-right {
+    float:right;
+    margin-right:10px;
+    
+}
+
+.collapse .nav-right > li.nav-item > a.nav-link {
+    color:white;
+    font-weight: bold;
+}
+
+.container-login {
+    background-color:#ccc; 
+    padding: 30px;
+    margin-top: 15%;
+    border-radius: 5px;
+    -webkit-box-shadow:  1px 4px 8px 1px #666;
+    -moz-box-shadow:  1px 4px 8px 1px #666;
+    box-shadow:  1px 4px 8px 1px #666;
+}

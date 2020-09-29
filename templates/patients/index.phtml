@@ -1,0 +1,71 @@
+<body>
+<div class="container martop-20">
+  <?php     
+    if($_REQUEST['m']) { 
+        $msg = (int) $_REQUEST['m']; 
+        $class = "alert alert-success";
+
+        if($msg == 1) {
+          $message = "Paciente inserido com sucesso!"; 
+        }
+
+        if($msg == 2) {          
+          $message = "Paciente Alterado com Sucesso!";
+        }
+
+        if($msg == 3) {
+          $class = "alert alert-danger"; 
+          $message = "Não foi possível alterar o paciente!"; 
+        }      
+
+        if($msg == 4) {
+          $class = "alert alert-danger";
+          $message = "Não foi possível inserir o Paciente!"; 
+        }   
+
+        if($msg == 5) {
+          $class = "alert alert-danger"; 
+          $message = "Paciente deletado com sucesso!"; 
+        }
+
+        if($msg == 6) {
+          $class = "alert alert-danget";
+          $message = "Não foi possível deletar o Paciente"; 
+        }
+  ?>     
+    <div class="<?=$class?>"><?=$message?></div>
+  <?php 
+    }
+  ?>
+    <h2>Cadastro de Pacientes</h2>
+    <a class="btn btn-link" href="/patients/new">+ Novo Paciente</a>
+    
+    </form>
+    <table class="table">
+    <thead>
+    <tr>      
+      <th scope="col">Nome</th>
+      <th scope="col">Idade</th>
+      <th scope="col">Telefone</th>      
+      <th scope="col">Matrícula</th>      
+    </tr>
+    </thead>
+
+    <?php foreach($patients as $patient) { ?>
+    <tbody>
+    <tr>
+      <td><?php echo $patient->name; ?></td>
+      <td><?php echo $patient->age; ?></td>
+      <td><?php echo $patient->telephone; ?></td>
+      <td><?php echo $patient->registration; ?></td> 
+      <td>
+      <a href="/patients/update/<?=$patient->id ?>" class="btn btn-success">Editar</a>
+      <a href="/patients/remove/<?=$patient->id ?>" class="btn btn-danger">Remover</a>
+      </td>     
+    </tr>    
+    </tbody>
+    <?php } ?>
+    </table>    
+</div>
+    
+</body>
