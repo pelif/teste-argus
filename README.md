@@ -59,5 +59,6 @@ INSERT INTO `users` VALUES (1,'teste','teste@argus.com','123456', NOW(), NULL);
 
 5. Após terminar de configurar a conexão com o banco de dados, vá até a raíz do projeto e inicie o servidor local do PHP com o comando: **php -S localhost:8080 -t public** . No meu caso usei a porta 8080, fica a critério a necessidade de mudança de porta. Após isto é só ir no browser e digitar: **http://localhost:8080**, você será direcionado à url de login. Para efeturar o login digite o usuário **teste@argus.com** e para a senha digite: **123456**
 
+### Instruões para importação de pacientes via .txt
 
-
+Na raíz do projeto há um arquivo chamado patients.txt, a parte de importação de arquivo vai seguir este padrão de arquivo para importação. O arquivo segue o seguinte padrão: Após o nome, por exemplo, há dois espaços, após a idade há também dois espaços, ou seja, os dados estão separados por dois espaços. É bom também evitar linhas em branco. 

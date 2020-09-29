@@ -18,7 +18,7 @@ return [
 
         'db' => [
             'driver' => 'mysql',
-            'host' => '172.17.0.3',
+            'host' => '172.22.0.2',
             'database' => 'teste-argus',
             'username' => 'root',
             'password' => '123456',

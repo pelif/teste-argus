@@ -1,18 +1,61 @@
 version: '2'
+services: 
+    database: 
+        container_name: mysql57
+        image: mysql:5.7
+        volumes: 
+            - dbdata:/var/lib/mysql
+        environment: 
+            - "MYSQL_DATABASE=teste-argus"
+            - "MYSQL_USER=argus"
+            - "MYSQL_PASSWORD=123456"
+            - "MYSQL_ROOT_PASSWORD=123456"
+            - "MYSQL_PORT=3306"
+        ports: 
+            - 3306:3306    
+        networks: 
+            - appArgus
 
-volumes:
-    logs:
-        driver: local
-
-services:
-    slim:
-        image: php:7-alpine
+    app: 
+        container_name: teste-argus
+        build: 
+            context: . 
+            dockerfile: app.Dockerfile
         working_dir: /var/www
-        command: php -S 0.0.0.0:8080 -t public
-        environment:
-            docker: "true"
-        ports:
-            - 8080:8080
-        volumes:
-            - .:/var/www
-            - logs:/var/www/logs
+        volumes:             
+            - ./:/var/www        
+        environment: 
+            - "DB_HOST=database"
+            - "DB_PORT=3306"
+        links: 
+            - database
+        depends_on: 
+            - database
+        networks: 
+            - appArgus    
+    
+    web: 
+        container_name: nginx
+        build: 
+            context: . 
+            dockerfile: web.Dockerfile
+        ports: 
+            - 80:80
+        links: 
+            - app
+        networks: 
+            - appArgus    
+        volumes: 
+            - ./:/var/www 
+            # - ./access.log:/var/log/nginx/access.log
+            # - ./error.log:/var/log/nginx/error.log   
+
+networks: 
+    appArgus:        
+volumes: 
+    dbdata:
+
+            
+
+
+    
